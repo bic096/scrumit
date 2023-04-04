@@ -7,6 +7,6 @@ class RedirectingScreen extends StatelessWidget {
   final authCtrl = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
-    return const Center(child: CircularProgressIndicator());
+    return const Scaffold(body: Center(child: CircularProgressIndicator()));
   }
 }

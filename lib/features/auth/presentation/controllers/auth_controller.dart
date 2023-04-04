@@ -1,12 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:scrumit/core/presentaion/landing_page.dart';
 import 'package:scrumit/core/usecases/usercase.dart';
+
 import 'package:scrumit/features/auth/domain/entities/user.dart';
 import 'package:scrumit/features/auth/domain/usecases/auth_usecases.dart';
 import 'package:scrumit/features/auth/presentation/screens/auth_screen.dart';
+import 'package:scrumit/features/meetings/presentaion/controller/meeting_controller.dart';
 import 'package:scrumit/features/projects/presentation/controllers/project_controller.dart';
 import 'package:scrumit/features/projects/presentation/screens/project_list_screen.dart';
+import 'package:scrumit/features/sprints/presentation/controllers/sprint_controller.dart';
 import 'package:scrumit/features/teams/presentation/controllers/team_controller.dart';
+
+import '../../../../injection_container.dart';
 
 class AuthController extends GetxController {
   final Login login;
@@ -58,11 +64,11 @@ class AuthController extends GetxController {
     final accountORfail = await getAccount(params: NoParams());
     accountORfail.fold((l) {
       requestStatus(RequestStatus.faild);
-      Get.to(() => AuthScreen());
+      Get.offAll(() => AuthScreen());
       debugPrint(l.toString());
     }, (r) async {
       requestStatus(RequestStatus.success);
-      Get.to(() => ProjectListScreen(title: 'Project List'));
+      Get.offAll(() => ProjectListScreen(title: 'Project List'));
       debugPrint(r.toString());
       currentUserId = r.userId;
       await tmCtrl.getUserTeamsListFun();
@@ -97,9 +103,15 @@ class AuthController extends GetxController {
 
     logoutORfail.fold((l) {
       requestStatus(RequestStatus.faild);
-    }, (r) {
+    }, (r) async {
       requestStatus(RequestStatus.success);
-      Get.to(() => AuthScreen());
+      //clear the old project list and off to login page
+      // Get.delete<ProjectController>();
+      // Get.delete<MeetingController>();
+      // Get.delete<SprintController>();
+      // Get.delete<TeamController>();
+      pCtrl.projectList([]);
+      Get.off(() => AuthScreen());
     });
   }
 

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scrumit/core/presentaion/landing_page.dart';
 import 'package:scrumit/core/presentaion/redirecting_screen.dart';
+import 'package:scrumit/core/presentaion/splash_page.dart';
 import 'injection_container.dart' as di;
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  di.init();
+  // di.init();
 
   runApp(const Main());
 }
@@ -57,7 +59,7 @@ class Main extends StatelessWidget {
         //   inversePrimary: Color(0xffddfeff),
         //   surfaceTint: Color(0xff4496e0),
         // ),
-        scheme: FlexScheme.flutterDash,
+        scheme: FlexScheme.aquaBlue,
         surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
         blendLevel: 9,
         subThemesData: const FlexSubThemesData(
@@ -125,7 +127,8 @@ class Main extends StatelessWidget {
 // If you do not have a themeMode switch, uncomment this line
 // to let the device system mode control the theme mode:
       themeMode: ThemeMode.system,
-      home: RedirectingScreen(),
+      // home: RedirectingScreen(),
+      home: const LandingPage(),
       // home: ProjectListScreen(title: 'Project List Page'),
     );
   }

@@ -11,10 +11,10 @@ import 'package:scrumit/features/meetings/meetings_injection_container.dart'
 
 Future<void> init() async {
   Get.lazyPut(() => AppWrite(), fenix: true);
-  auth.init();
-  team.init();
-  projects.init();
-  meeting.init();
+  await auth.init();
+  await team.init();
+  await projects.init();
+  await meeting.init();
 
   sprint.init();
 }

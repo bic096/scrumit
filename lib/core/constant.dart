@@ -17,6 +17,6 @@ const kReleaseBacklogCollectionId = '63b42079abffece2cc74';
 
 //const kAppWriteServerEndPoint = 'http://192.168.1.51/v1';//bic096
 // const kAppWriteServerEndPoint = 'http://192.168.43.22/v1'; //ran
-const kAppWriteServerEndPoint =
+String kAppWriteServerEndPoint =
     'https://cac9-197-48-87-87.eu.ngrok.io/v1'; //ngrok
 const kAppwriteServerProjectId = '63ab7d8bd32e2bb4cff6';

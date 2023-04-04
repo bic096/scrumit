@@ -12,6 +12,8 @@ import 'package:scrumit/features/sprints/presentation/screens/sprint_list_screen
 import 'package:scrumit/features/teams/presentation/screens/team_screen.dart';
 import 'package:scrumit/utils/size_helper.dart' as size;
 
+import '../../../auth/presentation/controllers/auth_controller.dart';
+
 class HomeScreen extends StatelessWidget {
   HomeScreen({
     super.key,
@@ -22,6 +24,7 @@ class HomeScreen extends StatelessWidget {
   final pCtrl = Get.find<ProjectController>();
   final sCtrl = Get.find<SprintController>();
   final mCtrl = Get.find<MeetingController>();
+  final authCtrl = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -199,8 +202,8 @@ class HomeScreen extends StatelessWidget {
                   label: 'meeting',
                   onPress: () async {
                     var v = await mCtrl.joinMeetingFun(
-                        projectId: '63d1aaa3e4ec8a296cb6',
-                        userId: '63bc2ec150a74265808b');
+                        projectId: pCtrl.currentProject.projectId!,
+                        userId: authCtrl.currentUserId);
                     if (v == true) {
                       Get.to(() => MeetingScreen());
                     }
