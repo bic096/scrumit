@@ -1,15 +1,11 @@
 # scrumit
 
-A new Flutter project.
+Scrumit has everything you need for effective project management, including Agile Scrum support,
+task management, sprint planning, team management,
+reports and analytics, and a user-friendly interface.
+And best of all, it\'s completely free!'.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+it build on clean-arch and uses GetX, Appwrite.
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
